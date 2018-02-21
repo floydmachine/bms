@@ -12,29 +12,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Proxy;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
-@Table(name="brand")
-@Proxy(lazy=false)
+@Table(name = "brand")
 public class Brand {
 
 	@Id
-	@Column(name="brandid")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "brandid")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int brandid;
-	
-	private String brandname;
-	
-	//@LazyCollection(LazyCollectionOption.FALSE)
-	@JsonIgnore
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="brand_brandid")
-	private List<Bag> baglist;
 
-	
+	private String brandname;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "brand_brandid")
+	private List<Bag> baglist;
 
 	public int getBrandid() {
 		return brandid;

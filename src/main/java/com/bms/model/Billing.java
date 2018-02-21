@@ -13,33 +13,33 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="billing")
+@Table(name = "billing")
 public class Billing {
-	
+
 	@Id
-	@Column(name="billid")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "billid")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int billid;
-	
+
 	private String address;
-	
+
 	private String country;
-	
+
 	private String streetno;
-	
+
 	private String state;
-	
+
 	private long pzcode;
-	
-	@Column(length=3000)
+
+	@Column(length = 3000)
 	private String information;
-	
+
 	@ManyToOne
-	@JoinColumn(name="bill_user")
+	@JoinColumn(name = "bill_user")
 	private Users user;
-	
+
 	@OneToMany
-	@JoinColumn(name="bill_bag")
+	@JoinColumn(name = "bill_bag")
 	private List<Bag> baglist;
 
 	public int getBillid() {
@@ -114,7 +114,4 @@ public class Billing {
 		this.baglist = baglist;
 	}
 
-
-	
-	
 }
